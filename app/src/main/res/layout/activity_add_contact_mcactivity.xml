@@ -1,78 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddContactMCActivity"
-    android:padding="10dp">
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".WelcomeMCActivity">
 
     <TextView
-        android:id="@+id/tvTitle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="NUEVO CONTACTO"
+        android:textSize="30sp"
+        android:textColor="@color/teal_700"
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textStyle="bold"
+        android:text="Nuevo Contacto"/>
 
-    <EditText
-        android:id="@+id/edtNewContact"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Digite el producto"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle2"
-        tools:layout_editor_absoluteX="10dp" />
+        android:layout_marginTop="40dp"
+        android:hint="Nombre contacto"
+        app:startIconDrawable="@drawable/user"
+        app:startIconTint="@color/teal_700"
+        app:endIconMode="clear_text">
 
-    <EditText
-        android:id="@+id/edtNumber"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNewContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLength="20"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Digite el numero"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/edtNewContact"
-        tools:layout_editor_absoluteX="10dp" />
+        android:layout_marginTop="20dp"
+        android:hint="Número de teléfono"
+        app:startIconDrawable="@drawable/phone"
+        app:startIconTint="@color/teal_700"
+        app:endIconMode="clear_text">
 
-    <EditText
-        android:id="@+id/edtProprietary"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="8"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Proprietario"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/edtNumber"
-        tools:layout_editor_absoluteX="10dp" />
+        android:layout_marginTop="20dp"
+        android:hint="Propietario"
+        app:startIconDrawable="@drawable/user"
+        app:startIconTint="@color/teal_700"
+        app:endIconMode="clear_text">
 
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtProprietary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLength="20"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Guardar"
-        app:layout_constraintTop_toBottomOf="@+id/edtProprietary"
-        tools:layout_editor_absoluteX="290dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="28dp"
-        android:text="Regresar"
-        android:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
-        app:layout_constraintTop_toBottomOf="@+id/edtProprietary" />
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="Regresar"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Guardar"/>
+
+    </LinearLayout>
+
+</LinearLayout>

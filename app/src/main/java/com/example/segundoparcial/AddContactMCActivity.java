@@ -1,13 +1,16 @@
 package com.example.segundoparcial;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.segundoparcial.daoMC.ContactsMCDao;
 import com.example.segundoparcial.daoMC.ContactsMCDaoImpRoom;
@@ -26,6 +29,10 @@ public class AddContactMCActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact_mcactivity);
 
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         estado=0;
         Intent intent =new Intent(this,MainMCActivity.class);
         dao = new ContactsMCDaoImpRoom(getApplicationContext());
@@ -43,20 +50,24 @@ public class AddContactMCActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 reset();
-                startActivity(intent);
+                finish();
             }
         });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(estado == 0){
-                    save();
+                if(!edtContact.getText().toString().isEmpty() && !edtNumber.getText().toString().isEmpty() && !edtProprietary.getText().toString().isEmpty()){
+                    if(estado == 0){
+                        save();
+                    }else{
+                        update();
+                    }
+                    reset();
+                    startActivity(intent);
                 }else{
-                    update();
+                    Toast.makeText(AddContactMCActivity.this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
                 }
-                reset();
-                startActivity(intent);
             }
         });
     }
@@ -98,5 +109,15 @@ public class AddContactMCActivity extends AppCompatActivity {
         }catch (Exception e){
             estado=0;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 }
