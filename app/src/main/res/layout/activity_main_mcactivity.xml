@@ -40,4 +40,14 @@
         app:tint="@color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
+    <TextView
+        android:id="@+id/txvDeveloper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="25dp"
+        android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:text="Desarrollado por Juan Carlos Molina Chamel"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
